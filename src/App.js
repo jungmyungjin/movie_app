@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+
+function Food({fav}){
+	return <h1>I like {fav}</h1>
+}
+
+const foodILike
+{
+	
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+		<h1>Hello!!</h1>
+		{/* Food 컴포넌트에 정보를 넘긴다 */}
+		<Food fav="samgyeobsal"/>
+		<Food fav="pizza"/>
+		<Food fav="beef"/>
+		<Food fav="kimchi"/>
     </div>
   );
 }

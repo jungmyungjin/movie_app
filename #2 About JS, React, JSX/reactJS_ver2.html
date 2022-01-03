@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- JSX로 다시만들기 -->
+<html>
+  <body>
+    <!-- 이 비어있는 div는 ReactDom이 React element들을 가져다 놓을 곳이다. -->
+    <div id="root"></div>
+  </body>
+  <!-- 
+		JSX
+		- Javascript를 확장한 언어
+		- React요소를 만들 수 있게 해준다
+		- HTML과 비슷해서 JSX로 React요소를 만들면 편하다
+
+		'reactJS_ver1.html'에서 만든 내용을 JSX를 사용하여 더 간단하게 만들어보자
+		(실제 개발시엔 이와 같은 JSX를 자주 쓰게 된다)
+	-->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+
+  <!-- 
+		Babel
+		- JSX로 작성한 코드는 그냥 동작하면, 웹 브라우저에서 인식을 하지 못한다.
+		- JSX로 작성한 코드를 React코드로 변환해주는 변환기가 필요한데, Babel을 사용하면 된다.
+		- 변환 되는 내용을 확인해보면, 'reactJS_ver2.html' -> 'reactJS_ver1.html' 코드와 같이 변환이 된다.
+
+		babel 변환을 사용하는 방법(중 하나)
+	 -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root"); // HTML 요소중 ID가 'root'인 Element(요소)를 가진 변수 root123 생성
+
+    // 함수화 첫번째 예제, 이 함수들을 컴포넌트 라고 하며 첫글자는 꼭 대문자로 해야한다.
+    function H123() {
+      return (
+        <h3
+          id="title"
+          onMouseEnter={() => console.log("mouse enter")}
+          style={{ color: "pink" }}
+        >
+          Hey Mouse, come here~!!
+        </h3>
+      );
+    }
+
+    // 함수화 두번째 예제 (arrow function), 이 함수들을 컴포넌트 라고 하며 첫글자는 꼭 대문자로 해야한다.
+    const Btn = () => (
+      <button
+        style={{ backgroundColor: "black", color: "pink" }}
+        onClick={() => console.log("I'm clicked")}
+      >
+        Click me
+      </button>
+    );
+
+    // 컴포넌트를 컴포넌로
+    const Container = () => (
+      // div안에는 함수화 된 내용이 들어간다, 이떄 첫글짜는 꼭 대문자여야 한다, 만약 첫글자가 소문자로 정의된 경우 Element(요소)라고 인식한다
+      <div>
+        <H123 />
+        <Btn />
+      </div>
+    );
+    ReactDOM.render(<Container />, root123); // React elemet를 가지고 HTML로 만들어 배치한다.
+  </script>
+</html>

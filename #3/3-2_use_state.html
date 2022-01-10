@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- State 사용하기(사용 후) -->
+<!-- 
+	어렵게 사용하는 버전과 쉽게 사용하는 버전이 있는데, 둘 다 사용해보면서 차이점을 비교해보자 
+	Click 버튼을 눌렀을때, 누적되어 눌린 총 횟수가 화면에 출력된다.
+	
+	버튼을 눌렀을 경우 카운팅이 되는걸 바로 화면에 반영하려면 리렌더링을 잊지 않고 "꼭" 해줘야 한다.
+	이전엔 리렌더링 하는 함수를 수동으로 넣어줬으나, 자동으로 할 수 있는 방법이있다.
+	
+	=> useState()를 사용하면 자동으로 렌더링이 동작한다.
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root"); // HTML 요소중 ID가 'root'인 Element(요소)를 가진 변수 root123 생성
+    function App123() {
+      const [counter12, setCounter12] = React.useState(0); // 초기값으로 '0'을 설정해주었다. // 초기값 변수와, 함수를 각각 왼쪽항의 변수들로 접근할 수 있게 한다
+      const onClick12 = () => {
+        setCounter12(counter12 + 1); // setCounter12가 실행될 때 마다, 컴포넌트는 리랜더링 한다.
+      };
+      return (
+        // 리랜더링 시 바뀌는 부분은 div내용 전체가 아니라, 오직 {counter12}의 값 뿐이다.
+        <div>
+          <h3 style={{ color: "pink" }}>Total click : {counter12}</h3>
+          <button
+            style={{ backgroundColor: "black", color: "pink" }}
+            onClick={onClick12}
+          >
+            Click me
+          </button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App123 />, root123);
+  </script>
+</html>

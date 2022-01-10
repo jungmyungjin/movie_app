@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- State 사용하기(사용 전) -->
+<!-- 
+	어렵게 사용하는 버전과 쉽게 사용하는 버전이 있는데, 둘 다 사용해보면서 차이점을 비교해보자 
+	Click 버튼을 눌렀을때, 누적되어 눌린 총 횟수가 화면에 출력된다.
+	
+	버튼을 눌렀을 경우 카운팅이 되는걸 바로 화면에 반영하려면 리렌더링을 잊지 않고 "꼭" 해줘야 한다.
+	때문에 출력되는 값이 수정될 때 마다 렌더링을 다시 해주었다.
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root");
+    let counter = 0;
+    function countUp() {
+      counter = counter + 1;
+      render(); // 바뀌어야 하는 지점에 이를떄마다 반드시 렌더링을 해주어야 한다. 하지만 이 방식은 매번 확인하여 넣어줘야해서 번거로운 방법이다.
+    }
+    function render() {
+      ReactDOM.render(<Container />, root123);
+    }
+    const Container = () => (
+      <div>
+        <h3>Total clicks: {counter}</h3>
+        <button onClick={countUp}>Click me</button>
+      </div>
+    );
+    render();
+  </script>
+</html>

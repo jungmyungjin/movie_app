@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!-- State 사용 연습 (심화) -->
+<!-- 
+	unit conversion(단위 변환)앱 만들기
+	분 -> 시간
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root");
+    function MinuteToHour() {
+      const [amount12, setAmount12] = React.useState(0); // 값이 바뀔때 마다 UI는 refresh 된다. (리랜더링)
+      const [inverted, setInvert] = React.useState(false); // inverte 값이 변경될때 마다 UI는 refresh 된다. (리랜더링)
+      const onChange12 = (evnet) => {
+        // 바뀌는 입력값을 그대로 가져오려면 event를 이용해야한다.
+        // console.log(event.target.value);
+        // 데이터를 업데이트 하려면 `setStatue`함수를 사용해야한다.
+        setAmount12(event.target.value);
+      };
+      const reset12 = () => setAmount12(0);
+      const onFlip12 = () => {
+        reset12();
+        setInvert((current) => !current);
+      }; // inverted 버튼을 누르면 inverted 값을 반전 시키도록한다.
+      return (
+        // label : 해당 글자를 클릭하면 그에 해당되는 input으로 포인팅이 된다. 보통 input과 같이 사용한다.
+        // for : label 에서의 연계될 input의 id를 입력하여, 연계를 도와주는 속성이다
+        // onChange : 값의 변화가 있을때를 감지하는 이벤트 리스너
+        <div>
+          <div>
+            <label for="minutes55">Minutes</label>
+            <input
+              value={inverted ? Math.round(amount12 * 60) : amount12}
+              id="minutes55"
+              placeholder="Minutes"
+              type="number"
+              onChange={onChange12}
+              disabled={inverted}
+            />
+          </div>
+
+          <div>
+            <label for="hours55">hours</label>
+            <input
+              value={inverted ? amount12 : Math.round(amount12 / 60)}
+              id="hours55"
+              placeholder="Hours"
+              type="number"
+              onChange={onChange12}
+              disabled={!inverted}
+            />
+          </div>
+
+          <button onClick={reset12}>Reset</button>
+          <button onClick={onFlip12}>
+            {inverted ? "Turn back" : "Invert"}
+          </button>
+        </div>
+      );
+    }
+
+    function KmToMiles() {
+      const [amount12, setAmount12] = React.useState(0); // 값이 바뀔때 마다 UI는 refresh 된다. (리랜더링)
+      const [inverted, setInvert] = React.useState(false); // inverte 값이 변경될때 마다 UI는 refresh 된다. (리랜더링)
+      const onChange12 = (evnet) => {
+        setAmount12(event.target.value);
+      };
+      const reset12 = () => setAmount12(0);
+      const onFlip12 = () => {
+        reset12();
+        setInvert((current) => !current);
+      };
+      return (
+        <div>
+          <div>
+            <label for="mile12">Mile</label>
+            <input
+              value={inverted ? Math.round(amount12 * 0.621371) : amount12}
+              id="mile12"
+              placeholder="mile"
+              type="number"
+              onChange={onChange12}
+              disabled={inverted}
+            />
+          </div>
+          <div>
+            <label for="km12">Kilometers</label>
+            <input
+              value={inverted ? amount12 : Math.round(amount12 * 1.609)}
+              id="km12"
+              placeholder="Kilometers"
+              type="number"
+              onChange={onChange12}
+              disabled={!inverted}
+            />
+          </div>
+
+          <button onClick={reset12}>Reset</button>
+          <button onClick={onFlip12}>
+            {inverted ? "Turn back" : "Invert"}
+          </button>
+        </div>
+      );
+    }
+
+    function App123() {
+      const [index, setIndex] = React.useState("xx");
+      const onSelect12 = (event) => {
+        setIndex(event.target.value);
+      };
+      //   선택한 값이 변화될때를 Listen하기 위해 onChange 리스너를 추가한다
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <select value={index} onChange={onSelect12}>
+            <option value="xx">Select yout units</option>
+            <option value="0">Minutes & Hours</option>
+            <option value="1">Km & Miles</option>
+          </select>
+          <hr />
+          {index === "0" ? <MinuteToHour /> : null}
+          {index === "1" ? <KmToMiles /> : null}
+        </div>
+      );
+    }
+    ReactDOM.render(<App123 />, root123);
+  </script>
+</html>

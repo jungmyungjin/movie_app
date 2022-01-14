@@ -1,6 +1,6 @@
-**## React.useState() 사용**
+## React.useState() 사용
 
-**\*\*페이지 내용\*\***
+**페이지 내용**
 
 `3-1_not_use_state.html`: useState()를 사용하지 않을때의 리렌더링 방식
 

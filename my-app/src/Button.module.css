@@ -1,0 +1,6 @@
+.title {
+  color: white;
+  background-color: #ff7675;
+}
+
+/* index.js 가 아닌 Button.js에 import 한다 */

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- props -->
+<!-- 
+	props : 부모 컴포넌트로부터 자식컴포넌트에 데이터를 보낼 수 있게 해주는 방법
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root");
+
+    // 리액트 내부에서 사용중인 모든 컴포넌트들은, 괄호로 인자를 받는다.
+    // 괄호안에서 인자를 받아올 변수의 이름을 아무거나 지을 수 있는데, 이 인자들을 Props(Properties)라고 한다
+
+    // Btn 의 속성(property)값들은 'Props'라는 오브젝트 변수에 다 담기게된다, 이 함수의 인자값은 늘 하나다
+    // - 오브젝트 명이 아닌, {} 중괄호를 사용하여 가져오면 더 간단하게 가져올 수 있다.
+    // - Btn에 적용할 속성륻릉 이고에서 적용을 시키면 된다.
+    function Btn({ onClick12, text12 }) {
+      console.log(text12, "was rendered");
+      return (
+        <button
+          onClick={onClick12}
+          style={{
+            backgroundColor: "black",
+            color: "pink",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text12}
+        </button>
+      );
+    }
+    function App123() {
+      // 부모 App123의 상태가 바뀌는 함수이며, 이 함수를 실행시킬때 자식 함수도 실행시킨다.
+      const [value, setValue] = React.useState("Save Change");
+      const changeValue = () => setValue("Revert Change");
+      // 아래의 Btn에서 작성하는 속성은, 실제 html 속성이 아닌, 그냥 커스텀 컴포넌트 이다.
+      // style이라는 동일명으로 속성을 적어도 Btn이 커스텀 컴포넌트이기 때문에, 일개 속성 하나로 인식을 한다.
+      // 이 속성은 boolean, function 타입 등으로 변경할 수 있다.
+      return (
+        <div>
+          <Btn
+            text12={value}
+            onClick12={changeValue}
+            style={{ color: "green" }}
+          />
+          <Btn text12="Continue" />
+        </div>
+      );
+    }
+    ReactDOM.render(<App123 />, root123);
+  </script>
+</html>

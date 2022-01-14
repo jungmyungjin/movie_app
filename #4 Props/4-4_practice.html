@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>myungjin's practice</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    const MyTitle = ({ text }) => (
+      <div
+        style={{
+          color: "pink",
+          width: "100%",
+          height: "100px",
+          textAlign: "center",
+          fontSize: 40,
+          fontWeight: "bold",
+          backgroundColor: "#dfe6e9",
+          borderRadius: 50,
+          border: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          marginBottom: 20,
+        }}
+      >
+        {text}
+      </div>
+    );
+
+    function Subscribe() {
+      const [subscribed, setSubscriged] = React.useState(0);
+      const clickSubscribe = () => {
+        setSubscriged((current) => !current);
+      };
+      return (
+        <div
+          style={{
+            backgroundColor: "red",
+            width: 80,
+            height: 30,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "white",
+            fontWeight: "bold",
+            border: 0,
+            borderRadius: 5,
+            margin: 10,
+            cursor: "pointer",
+          }}
+          onClick={clickSubscribe}
+        >
+          {subscribed ? "구독완료!" : "구독"}
+        </div>
+      );
+    }
+    function Like({ content = "♥️" }) {
+      const [liked, setLiked] = React.useState(0);
+      const clickLike = () => {
+        setLiked((current) => !liked);
+      };
+      return (
+        <button
+          style={{
+            color: "red",
+            fontSize: 40,
+            backgroundColor: "pink",
+            border: 0,
+            borderRadius: 30,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: 60,
+            height: 60,
+            margin: 10,
+            cursor: "pointer",
+          }}
+          onClick={clickLike}
+        >
+          {liked ? "✓" : "♥️"}
+        </button>
+      );
+    }
+
+    const MyPhoto = () => (
+      <img src="./practice.png" width={600} textAlign="center" />
+    );
+
+    // prop 함수가 대문자가 아닌 경우, 인식을 못한다..!!
+    const App = () => (
+      <div style={{ textAlign: "center" }}>
+        <MyTitle text="♥️ 구독과 좋아요 꼭 눌러주세요 ♥️" />
+        <MyPhoto />
+        <div
+          style={{
+            display: "flex",
+            height: 100,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Subscribe />
+          <Like />
+        </div>
+      </div>
+    );
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

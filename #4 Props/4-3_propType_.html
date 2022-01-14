@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- props -->
+<!-- 
+	propType : 어떤 타입의 prop인지 체크한다
+		단순 syntax에러가 아닌, 개발자의 의도와 다르타입이 들어오는 경우를 체크해 준다.
+		설정 타입과 다르면 콘솔에 오류를 띄운다.
+
+	설치
+		<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root");
+
+    // `fontSize12`변수의 디폴트값으로 16을 주었다. (미설정 시 설정)
+    function Btn({ onClick12, text12, fontSize12 = 12 }) {
+      return (
+        <button
+          onClick={onClick12}
+          style={{
+            fontSize: fontSize12,
+            backgroundColor: "black",
+            color: "pink",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text12}
+        </button>
+      );
+    }
+
+    // propTypes 설정
+    // [설정할prop] : [설정 내용]
+    // 반드시 설정 해야하는 타입인 경우 `.isRequired`를 붙힌다.
+    // text12 : string 타입이여야 한다
+    // fontSize12 : 숫자타입 이여야 하며, 반드시 설정이 되어야 한다.
+    Btn.propTypes = {
+      text12: PropTypes.string,
+      fontSize12: PropTypes.number.isRequired,
+    };
+
+    function App123() {
+      return (
+        <div>
+          <Btn text12="Save Changes" fontSize12={18} />
+          <Btn text12={"Continue"} />
+        </div>
+      );
+    }
+    ReactDOM.render(<App123 />, root123);
+  </script>
+</html>

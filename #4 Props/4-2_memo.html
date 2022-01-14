@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- props -->
+<!-- 
+	React.memo(컴포넌트) : 해당 컴포넌트에서 state를 사용하여 리랜더링을 할때, "바뀐 부분만" 리랜더링 되도록 한다
+		=> 사이즈가 큰 컴포넌트를 쓸때 이걸 하지 않으면 리랜더링 시 느려질 수 있다고 한다.
+-->
+
+<html>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root123 = document.getElementById("root");
+    function Btn({ onClick12, text12 }) {
+      console.log(text12, "was rendered");
+      return (
+        <button
+          onClick={onClick12}
+          style={{
+            backgroundColor: "black",
+            color: "pink",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text12}
+        </button>
+      );
+    }
+    // 불필요한 랜더링을 줄이기 위하여, memo를 사용한다.
+    const MemorizedBtn12 = React.memo(Btn);
+    function App123() {
+      const [value, setValue] = React.useState("Save Change");
+      const changeValue = () => setValue("Revert Change");
+      return (
+        <div>
+          <MemorizedBtn12 text12={value} onClick12={changeValue} />
+          <MemorizedBtn12 text12="Continue" />
+        </div>
+      );
+      // 두번째 'Continue'버튼은 state가 변하더라도 리랜더링 할 필요가 없다.
+      // 때문에 memo를 하여 리랜더링 되지 않도록 한다.
+    }
+    ReactDOM.render(<App123 />, root123);
+  </script>
+</html>

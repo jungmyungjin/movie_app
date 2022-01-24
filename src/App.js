@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import Movie from "./components/Movie";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
@@ -11,7 +9,7 @@ import Detail from "./routes/Detail";
 // Switch : route를 찾는다. 이떄 route는 그 페이지의 URL을 의미한다.
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/movie/:helloMyId" element={<Detail />} />
         <Route path="/" element={<Home />} />

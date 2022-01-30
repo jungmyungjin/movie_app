@@ -1,0 +1,35 @@
+.bestMovie {
+  background-color: #2d3436;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.mainMovie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: violet;
+}
+
+.mainMovie > img {
+  height: 100%;
+}
+
+.mainMovie > .mainTitle {
+  position: absolute;
+  padding-top: 200px;
+  padding-left: 30px;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 65px;
+}
+
+.mainMovie > .mainSynopsis {
+  position: absolute;
+  padding-left: 30px;
+  padding-top: 340px;
+  width: 800px;
+  color: rgba(255, 255, 255, 0.7);
+}

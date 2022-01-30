@@ -1,0 +1,17 @@
+.home {
+  display: flex;
+  flex-direction: column;
+
+  background: red;
+  margin-top: 0px;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.movies {
+  display: flex;
+  background-color: yellow;
+}

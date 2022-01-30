@@ -1,0 +1,11 @@
+.movie {
+  background-color: burlywood;
+  display: flex;
+  flex-direction: column;
+  margin-right: 30px;
+  height: 350px;
+}
+
+.movie img {
+  height: 300px;
+}

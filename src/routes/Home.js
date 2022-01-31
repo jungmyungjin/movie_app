@@ -13,7 +13,7 @@ function Home() {
   const getMovies = async () => {
     const json = await (
       await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=7&sort_by=rating`
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=7&sort_by=rating&limit=50`
       )
     ).json();
     setMovies(json.data.movies);
@@ -28,7 +28,11 @@ function Home() {
       {Title()}
       {BestMovie(loading ? "" : movies[0])}
 
-      {loading ? <h1>Loading...</h1> : MovieList(movies)}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div className={styles.movieList}>{MovieList(movies)}</div>
+      )}
     </div>
   );
 }

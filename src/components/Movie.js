@@ -8,9 +8,6 @@ function Movie({ id, coverImg, title, rating }) {
       <a href={`/movie_app/movie/${id}`}>
         <img src={coverImg} alt={title} />
       </a>
-      <div>
-        <div>{rating}</div>
-      </div>
     </div>
   );
 }

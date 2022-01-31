@@ -1,0 +1,23 @@
+html {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  background-color: darkgreen;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: deepskyblue;
+}
+#root {
+  background-color: #1b2021;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

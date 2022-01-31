@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+import "../src/css/root.css";
 
 // HashRouter -> http://localhost:3000/#/
 // BrowserRouter -> http://localhost:3000/

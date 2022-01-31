@@ -2,16 +2,15 @@
   display: flex;
   flex-direction: column;
 
-  background: red;
+  background: #1b2021;
   margin-top: 0px;
+  height: 1200px;
+  align-items: center;
+
+  /* width: 100%; */
 }
 
-body {
-  margin: 0px;
-  padding: 0px;
-}
-
-.movies {
-  display: flex;
-  background-color: yellow;
+.movieList {
+  margin-top: 50px;
+  width: 1200px;
 }
